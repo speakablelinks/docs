@@ -1,1 +1,1330 @@
-{"openapi":"3.1.0","info":{"title":"FastAPI","version":"0.1.0"},"servers":[{"url":"/prod"}],"paths":{"/api/v0/":{"get":{"summary":"Root","operationId":"root_api_v0__get","responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}}}}},"/api/v0/items":{"get":{"tags":["Items"],"summary":"Root","operationId":"root_api_v0_items_get","responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}}}}},"/api/v0/users":{"get":{"tags":["Users"],"summary":"Root","operationId":"root_api_v0_users_get","responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}}}}},"/api/v0/link":{"put":{"tags":["Link"],"summary":"Root","operationId":"root_api_v0_link_put","responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}}}}}}}
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "/prod"
+    }
+  ],
+  "paths": {
+    "/v1/campaign/{campaign_id}": {
+      "post": {
+        "tags": [
+          "Campaign"
+        ],
+        "summary": "Update Campaign",
+        "operationId": "update_campaign_v1_campaign__campaign_id__post",
+        "parameters": [
+          {
+            "name": "campaign_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Campaign Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Campaign"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/campaign": {
+      "put": {
+        "tags": [
+          "Campaign"
+        ],
+        "summary": "Create Campaign",
+        "operationId": "create_campaign_v1_campaign_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Campaign"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/campaigns": {
+      "get": {
+        "tags": [
+          "Campaigns"
+        ],
+        "summary": "Get Campaigns",
+        "operationId": "get_campaigns_v1_campaigns_get",
+        "parameters": [
+          {
+            "name": "alias_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Alias Id"
+            }
+          },
+          {
+            "name": "campaign_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Campaign Id"
+            }
+          },
+          {
+            "name": "utm_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Utm Id"
+            }
+          },
+          {
+            "name": "utm_source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Utm Source"
+            }
+          },
+          {
+            "name": "utm_medium",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Utm Medium"
+            }
+          },
+          {
+            "name": "utm_campaign",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Utm Campaign"
+            }
+          },
+          {
+            "name": "utm_term",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Utm Term"
+            }
+          },
+          {
+            "name": "utm_content",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Utm Content"
+            }
+          },
+          {
+            "name": "created_before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "max": 9999999999,
+              "default": 9999999999,
+              "title": "Created Before"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link/{link_id}": {
+      "post": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Update Link",
+        "operationId": "update_link_v1_link__link_id__post",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Link Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Link"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link": {
+      "put": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Create Link",
+        "operationId": "create_link_v1_link_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Link"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link/{link_id}/clicks": {
+      "get": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Get Link Clicks",
+        "operationId": "get_link_clicks_v1_link__link_id__clicks_get",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Link Id"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "all",
+              "title": "Year"
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "all",
+              "title": "Month"
+            }
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "all",
+              "title": "Day"
+            }
+          },
+          {
+            "name": "hour",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "all",
+              "title": "Hour"
+            }
+          },
+          {
+            "name": "aggregate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Aggregate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link/{link_id}.qr": {
+      "get": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Get Qr",
+        "operationId": "get_qr_v1_link__link_id__qr_get",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Link Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/links": {
+      "get": {
+        "tags": [
+          "Links"
+        ],
+        "summary": "Get Links",
+        "operationId": "get_links_v1_links_get",
+        "parameters": [
+          {
+            "name": "short_link",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Short Link"
+            }
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Url"
+            }
+          },
+          {
+            "name": "campaign_alias_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Campaign Alias Id"
+            }
+          },
+          {
+            "name": "created_before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "max": 9999999999,
+              "default": 9999999999,
+              "title": "Created Before"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/links/clicks": {
+      "get": {
+        "tags": [
+          "Links"
+        ],
+        "summary": "Get Clicks",
+        "operationId": "get_clicks_v1_links_clicks_get",
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Start"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "End"
+            }
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "title": "Group By"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/links/gets": {
+      "get": {
+        "tags": [
+          "Links"
+        ],
+        "summary": "Get Gets",
+        "operationId": "get_gets_v1_links_gets_get",
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Start"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "End"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link/{link_id}/trigger": {
+      "put": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Create Trigger",
+        "description": "This method is called to create a trigger.\n    Trigger Subscriptions are stored in DynamoDB in the control plane.\n    A given trigger subscription would have one row to uniquely id the trigger subscription:\n    {\n        \"account_id\": account id that owns the trigger,\n        \"trigger_key\": uuid identifying this trigger\n        \"trigger_subscription_key\": trigger_subscriptions/{owner}/{trigger_type}/{link_id}/{trigger_subject}\n    }\n    and several other rows indicating if a particular trigger has already occured to ensure\n    we dedupe triggers and don't send the same one twice for a given period\n    {\n        \"account_id\": account id that owns the trigger,\n        \"trigger_key\": triggers/{owner}/{trigger_type}/{link_id}/{trigger_subject}/{date_portion_of_key}\n    }\n\nArgs:\n    event: Contains details of each Cognito user pool request\n\n    context: The second argument is the context object. A context object is passed to your function\n        by Lambda at runtime. This object provides methods and properties that provide\n        information about the invocation, function, and runtime environment.\n\nReturns:\n    A string letting the caller know that this was invoked correctly\n\nRaises:\n    Runtime.ImportModuleError: Unable to import module 'app': No module named 'arrow' if imports are not working correctly",
+        "operationId": "create_trigger_v1_link__link_id__trigger_put",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Link Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trigger"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link/{link_id}/triggers/{trigger_id}": {
+      "delete": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Delete Trigger",
+        "operationId": "delete_trigger_v1_link__link_id__triggers__trigger_id__delete",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Link Id"
+            }
+          },
+          {
+            "name": "trigger_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trigger Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/link/{link_id}/test_triggers": {
+      "get": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Get Test Trigger",
+        "operationId": "get_test_trigger_v1_link__link_id__test_triggers_get",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Link Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Campaign": {
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Campaign Id"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner"
+          },
+          "alias_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alias Id"
+          },
+          "utm_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Id"
+          },
+          "utm_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Source"
+          },
+          "utm_medium": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Medium"
+          },
+          "utm_campaign": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Campaign"
+          },
+          "utm_term": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Term"
+          },
+          "utm_content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Content"
+          }
+        },
+        "type": "object",
+        "title": "Campaign",
+        "examples": [
+          {
+            "alias_id": "a",
+            "campaign_id": "a96fa601-6736-4eaa-a5b4-99f09fb3f794",
+            "utm_campaign": "feature launch",
+            "utm_content": "bottom cta button",
+            "utm_id": "d60cd19d-0d7c-4a81-adb2-4b336cdc47b4",
+            "utm_medium": "email",
+            "utm_source": "active users",
+            "utm_term": "spring sale"
+          }
+        ]
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Link": {
+        "properties": {
+          "link_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Link Id"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner"
+          },
+          "alias_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alias Id"
+          },
+          "domain_and_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Domain And Path"
+          },
+          "short_link": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Short Link"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "niche": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NicheType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "expires": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "tagline_embedding": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tagline Embedding"
+          },
+          "content_embedding": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Embedding"
+          },
+          "campaign_alias_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Campaign Alias Id"
+          },
+          "campaign": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Campaign"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "favicon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Favicon"
+          },
+          "speakable": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speakable"
+          },
+          "text_render": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Render"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "title": "Link",
+        "examples": [
+          {
+            "alias_id": "jLZY679GUr4",
+            "campaign_alias_id": "a",
+            "description": "Created by your user id on 2025-12-18",
+            "domain_and_path": "e.speakable.link/Calgary",
+            "expires": "2027-12-18",
+            "favicon": "www.aucklandcouncil.govt.nz/favicon.ico",
+            "niche": "Services",
+            "short_link": "e.speakable.link/Calgary/jLZY679GUr4",
+            "speakable": "True",
+            "text_render": "True",
+            "url": "https://fastapi.tiangolo.com/#installation"
+          }
+        ]
+      },
+      "NicheType": {
+        "type": "string",
+        "enum": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "title": "NicheType"
+      },
+      "Trigger": {
+        "properties": {
+          "link_id": {
+            "type": "string",
+            "title": "Link Id"
+          },
+          "trigger_type": {
+            "type": "string",
+            "title": "Trigger Type"
+          },
+          "trigger_subject": {
+            "type": "string",
+            "title": "Trigger Subject"
+          },
+          "period": {
+            "type": "string",
+            "title": "Period"
+          },
+          "key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Key"
+          },
+          "subscription_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subscription Key"
+          },
+          "trigger_notification_destination": {
+            "type": "string",
+            "title": "Trigger Notification Destination"
+          }
+        },
+        "type": "object",
+        "required": [
+          "link_id",
+          "trigger_type",
+          "trigger_subject",
+          "period",
+          "trigger_notification_destination"
+        ],
+        "title": "Trigger",
+        "examples": [
+          {
+            "key": "folder/owner/trigger_type/link_id/trigger_subject/date_portion_of_key",
+            "link_id": "a96fa601-6736-4eaa-a5b4-99f09fb3f794",
+            "period": "day",
+            "subscription_key": "folder/owner/trigger_type/link_id/trigger_subject/period",
+            "trigger_notification_destination": "https://hooks.zapier.com/abcd1234",
+            "trigger_subject": "medium.com",
+            "trigger_type": "new_specific_referer_domain_cicked"
+          }
+        ]
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
